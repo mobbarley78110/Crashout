@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bw5q5kotbs2"]
+
+[ext_resource type="Texture2D" uid="uid://cjj2giog70bvg" path="res://assets/tileset x1.png" id="1_e5br3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_764jg"]
+atlas = ExtResource("1_e5br3")
+region = Rect2(1072, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wxln"]
+atlas = ExtResource("1_e5br3")
+region = Rect2(1088, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ua7er"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_764jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wxln")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 2.0
+}]
+
+[node name="Cursor" type="Node2D"]
+position = Vector2(8, 8)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, -8)
+sprite_frames = SubResource("SpriteFrames_ua7er")
+animation = &"new_animation"
+autoplay = "new_animation"

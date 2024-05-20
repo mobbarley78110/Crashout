@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://cvmp0omplulfi"]
+
+[ext_resource type="Texture2D" uid="uid://kpykebivjodj" path="res://assets/Players/players red x1.png" id="1_0m818"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_afqt8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4018j"]
+atlas = ExtResource("1_0m818")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vm2n"]
+atlas = ExtResource("1_0m818")
+region = Rect2(160, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlvkf"]
+atlas = ExtResource("1_0m818")
+region = Rect2(192, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gopg"]
+atlas = ExtResource("1_0m818")
+region = Rect2(224, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1soi1"]
+atlas = ExtResource("1_0m818")
+region = Rect2(256, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eme0w"]
+atlas = ExtResource("1_0m818")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dhou"]
+atlas = ExtResource("1_0m818")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_johj0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4018j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vm2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlvkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gopg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1soi1")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eme0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dhou")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7vmtk"]
+radius = 3.0
+height = 8.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_afqt8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_johj0")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7vmtk")
