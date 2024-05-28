@@ -3312,12 +3312,6 @@ texture = ExtResource("1_eviqa")
 9:2/0 = 0
 9:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:2/0/physics_layer_0/angular_velocity = 0.0
-4:0/animation_speed = 2.0
-4:0/animation_frame_0/duration = 1.0
-4:0/animation_frame_1/duration = 1.0
-4:0/0 = 0
-4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j6gal"]
 texture = ExtResource("4_ainkc")
