@@ -10,6 +10,8 @@ var speed = 2
 var cell_size :int
 var want_to_stop:bool = false
 var first_movement:bool = true
+var patience_time: int = 2
+var time_since_last_move: float = 0
 
 signal tile_reached
 
@@ -78,6 +80,10 @@ func _input(event):
 
 
 func _process(delta):
+	
+	# smoke if we dont move after n seconds
+
+	
 	# logic to move the player if a path was clicked
 	# if the path isn't emptuy, we move the player.
 	if selected_path.is_empty() == false:
@@ -91,7 +97,15 @@ func _process(delta):
 			stop_movement() # will stop at next tile if it was requested
 			selected_path.pop_front()
 	else:
-		animated_sprite_2d.play('idle')
+		
+		time_since_last_move+= delta
+		if time_since_last_move > patience_time :
+			print('smoke')
+			animated_sprite_2d.play('smoke')
+			#time_since_last_move = 0
+		else:
+			animated_sprite_2d.play('idle')
+		
 		# get position of mouse and show an a* path if exist
 		available_path = find_path()
 		for p in available_path:

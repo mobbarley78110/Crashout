@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvmp0omplulfi"]
+[gd_scene load_steps=19 format=3 uid="uid://cvmp0omplulfi"]
 
 [ext_resource type="Texture2D" uid="uid://kpykebivjodj" path="res://assets/Players/players red x1.png" id="1_0m818"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_afqt8"]
-[ext_resource type="Script" path="res://scripts/State Machine.gd" id="3_iymrt"]
+[ext_resource type="Script" path="res://scripts/State Machine.gd" id="3_dylfx"]
+[ext_resource type="Script" path="res://scripts/Player Idle.gd" id="4_patwg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4018j"]
 atlas = ExtResource("1_0m818")
@@ -123,14 +124,16 @@ position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_johj0")
 animation = &"smoke"
 autoplay = "idle"
-frame_progress = 0.692041
+frame_progress = 0.680255
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7vmtk")
 
-[node name="State Machine" type="Node" parent="."]
-script = ExtResource("3_iymrt")
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_dylfx")
+initial_state = NodePath("PlayerIdle")
 
-[node name="Idle" type="Node" parent="State Machine"]
+[node name="PlayerIdle" type="Node" parent="State Machine"]
+script = ExtResource("4_patwg")
